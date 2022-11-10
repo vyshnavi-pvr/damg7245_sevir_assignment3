@@ -94,7 +94,7 @@ from PIL import Image
 backend = "http://api:8001/predict_model"
 
 
-pickle_in = open("..\modelLinearRegression.pkl","rb")
+pickle_in = open("modelLinearRegression.pkl","rb")
 reg_model = joblib.load(pickle_in)
 
 #@app.route('/')
