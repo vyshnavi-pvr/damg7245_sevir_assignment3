@@ -1,19 +1,19 @@
-# import requests
+import requests
 
-# import streamlit as st
+import streamlit as st
 
-# # Define the title 
-# st.title("Car evaluation web application")
-# st.write(
-#     "The model evaluates a cars acceptability based on the inputs below.\
-#     Pass the appropiate details about your car using the questions below to discover if your car is acceptable."
-# )
+# Define the title 
+st.title("SEVIR Data Prediction")
+st.write(
+    "The model evaluates the lightning strikes in an image.\
+    Pass the Percentile values from the image to predict the number of lightning strikes ."
+)
 
-# # Input 1
-# buying = st.radio(
-#     "What are your thought's on the cars buying price?",
-#     ("vhigh", "high", "med", "low")
-# )
+# Input 1
+buying = st.radio(
+    "Enter the percentile values in the image",
+    ("vhigh", "high", "med", "low")
+)
 
 # # Input 2
 # maint = st.radio(
@@ -46,86 +46,86 @@
 # )
 
 # # Class values to be returned by the model 
-# class_values = {
-#     0: "unacceptable", 
-#     1: "acceptable", 
-#     2: "good", 
-#     3: "very good"
-#     }
+class_values = {
+    0: "unacceptable", 
+    1: "acceptable", 
+    2: "good", 
+    3: "very good"
+    }
 
-# # When 'Submit' is selected
-# if st.button("Submit"):
+# When 'Submit' is selected
+if st.button("Submit"):
 
-#     # Inputs to ML model
-#     inputs = {
-#         "inputs": [
-#             {
-#                 "buying": buying,
-#                 "maint": maint, 
-#                 "doors": doors, 
-#                 "persons": persons,
-#                 "lug_boot": lug_boot,
-#                 "safety": safety
-#             }
-#         ]
-#         }
+    # Inputs to ML model
+    inputs = {
+        "inputs": [
+            {
+                "buying": buying,
+                # "maint": maint, 
+                # "doors": doors, 
+                # "persons": persons,
+                # "lug_boot": lug_boot,
+                # "safety": safety
+            }
+        ]
+        }
         
-#     # Posting inputs to ML API 
-#     response = requests.post(f"http://host.docker.internal:8001/api/v1/predict/", json=inputs, verify=False)
-#     json_response = response.json()
+    # Posting inputs to ML API 
+    response = requests.post(f"http://host.docker.internal:8001/api/v1/predict/", json=inputs, verify=False)
+    json_response = response.json()
 
-#     prediction = class_values[json_response.get("predictions")[0]]
+    prediction = class_values[json_response.get("predictions")[0]]
 
-#     st.subheader(f"This car is **{prediction}!**")
-
-
-import numpy as np
-import pickle
-import pandas as pd
-#from flasgger import Swagger
-import streamlit as st 
-import joblib
-from PIL import Image
-
-#app=Flask(_name_)
-#Swagger(app)
-
-# interact with FastAPI endpoint
-backend = "http://api:8001/predict_model"
+    st.subheader(f"This car is **{prediction}!**")
 
 
-# pickle_in = open("../modelLinearRegression.pkl","rb")
-# reg_model = joblib.load(pickle_in)
+# import numpy as np
+# import pickle
+# import pandas as pd
+# #from flasgger import Swagger
+# import streamlit as st 
+# import joblib
+# from PIL import Image
 
-#@app.route('/')
-def welcome():
-    return "Welcome All"
+# #app=Flask(_name_)
+# #Swagger(app)
 
-# #@app.route('/predict',methods=["Get"])
-# def predict_flashes(X_validate):
-#     prediction = reg_model.predict([[X_validate]])
-#     print(prediction)
-#     return prediction
+# # interact with FastAPI endpoint
+# backend = "http://api:8001/predict_model"
 
 
+# # pickle_in = open("../modelLinearRegression.pkl","rb")
+# # reg_model = joblib.load(pickle_in)
 
-def main():
-    st.title("Number of Flashes")
-    html_temp = """
-    <div style="background-color:tomato;padding:10px">
-    <h2 style="color:white;text-align:center;">Streamlit Model as a Service ML App </h2>
-    </div>
-    """
-    st.markdown(html_temp,unsafe_allow_html=True)
-    flash_input = st.text_input("Enter Probability..X_validate","Type Here")
-    result=""
-    if st.button("Predict"):
-        print("hello")
-        # result=predict_flashes(flash_input)
-    st.success('The output is {}'.format(result))
-    if st.button("About"):
-        st.text("Lets LEarn")
-        st.text("Built with Streamlit")
+# #@app.route('/')
+# def welcome():
+#     return "Welcome All"
 
-if __name__=='main_':
-    main()
+# # #@app.route('/predict',methods=["Get"])
+# # def predict_flashes(X_validate):
+# #     prediction = reg_model.predict([[X_validate]])
+# #     print(prediction)
+# #     return prediction
+
+
+
+# def main():
+#     st.title("Number of Flashes")
+#     html_temp = """
+#     <div style="background-color:tomato;padding:10px">
+#     <h2 style="color:white;text-align:center;">Streamlit Model as a Service ML App </h2>
+#     </div>
+#     """
+#     st.markdown(html_temp,unsafe_allow_html=True)
+#     flash_input = st.text_input("Enter Probability..X_validate","Type Here")
+#     result=""
+#     if st.button("Predict"):
+#         print("hello")
+#         # result=predict_flashes(flash_input)
+#     st.success('The output is {}'.format(result))
+#     if st.button("About"):
+#         st.text("Lets LEarn")
+#         st.text("Built with Streamlit")
+
+# if __name__=='main_':
+#     main()
