@@ -94,18 +94,18 @@ from PIL import Image
 backend = "http://api:8001/predict_model"
 
 
-pickle_in = open("./modelLinearRegression.pkl","rb")
-reg_model = joblib.load(pickle_in)
+# pickle_in = open("../modelLinearRegression.pkl","rb")
+# reg_model = joblib.load(pickle_in)
 
 #@app.route('/')
 def welcome():
     return "Welcome All"
 
-#@app.route('/predict',methods=["Get"])
-def predict_flashes(X_validate):
-    prediction = reg_model.predict([[X_validate]])
-    print(prediction)
-    return prediction
+# #@app.route('/predict',methods=["Get"])
+# def predict_flashes(X_validate):
+#     prediction = reg_model.predict([[X_validate]])
+#     print(prediction)
+#     return prediction
 
 
 
@@ -120,7 +120,8 @@ def main():
     flash_input = st.text_input("Enter Probability..X_validate","Type Here")
     result=""
     if st.button("Predict"):
-        result=predict_flashes(flash_input)
+        print("hello")
+        # result=predict_flashes(flash_input)
     st.success('The output is {}'.format(result))
     if st.button("About"):
         st.text("Lets LEarn")
