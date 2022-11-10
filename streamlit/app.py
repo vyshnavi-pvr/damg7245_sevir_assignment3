@@ -84,7 +84,7 @@ import pickle
 import pandas as pd
 #from flasgger import Swagger
 import streamlit as st 
-
+import joblib
 from PIL import Image
 
 #app=Flask(_name_)
@@ -95,7 +95,7 @@ backend = "http://api:8001/predict_model"
 
 
 pickle_in = open("modelLinearRegression.pkl","rb")
-reg_model = pickle.load(pickle_in)
+reg_model = joblib.load(pickle_in)
 
 #@app.route('/')
 def welcome():
