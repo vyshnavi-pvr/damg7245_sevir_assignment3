@@ -13,6 +13,7 @@ from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from jose import JWTError, jwt
 from passlib.context import CryptContext 
 import sys
+import uvicorn
 
 
 print(sys.path)
@@ -212,3 +213,6 @@ def model_predict(input:float,current_user: User = Depends(get_current_active_us
    
     return {"predictions":list(y_pred)}
 
+
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="0.0.0.0", port=8001)
