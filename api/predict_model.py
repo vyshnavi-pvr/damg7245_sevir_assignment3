@@ -213,6 +213,9 @@ def model_predict(input:float,current_user: User = Depends(get_current_active_us
    
     return {"predictions":list(y_pred)}
 
+@app.get('/')
+def welcome():
+    return {"Hello!" : "Welcome to sevir page"}
 
 if __name__ == "__main__":
     uvicorn.run("main:app", host="0.0.0.0", port=8001)
