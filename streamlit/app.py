@@ -19,7 +19,7 @@ if choice == "Home Page":
 
 	value = st.text_input("Enter the quartile of an image: ")		
 
-	value = st.text_input("Enter Value")		
+	value = st.text_input("Prediction")		
 
 	if st.button("Submit"):
 		headers = {'accept': 'application/json',}
