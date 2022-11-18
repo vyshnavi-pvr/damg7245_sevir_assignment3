@@ -16,11 +16,11 @@ with st.sidebar:
 if choice == "Home Page":
 	username = st.text_input("Username")
 	password = st.text_input("password")
-<<<<<<< HEAD
+
 	value = st.text_input("Enter the quartile of an image: ")		
-=======
+
 	value = st.text_input("Enter Value")		
->>>>>>> 2bb52c8b275a962a42478521476b003b9667bf03
+
 	if st.button("Submit"):
 		headers = {'accept': 'application/json',}
 		data = {'grant_type': '','username': '{user_val}'.format(user_val=username),'password': '{pass_val}'.format(pass_val=password),'scope': '','client_id': '' ,'client_secret': '',}
