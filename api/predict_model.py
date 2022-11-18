@@ -18,7 +18,7 @@ import uvicorn
 
 print(sys.path)
 # sys.path.insert(1, 'scripts/')
-from app.api.aux_functions import load_n_combine_df
+from api.aux_functions import load_n_combine_df
 (X_train,y_train),(X_validate,y_validate),(X_test,y_test) = load_n_combine_df(path_to_data='dataset/',features_to_keep=np.arange(0,1,1),class_labels=False)
 
 loaded_model = joblib.load(open('modelLinearRegression.pkl', 'rb'))
